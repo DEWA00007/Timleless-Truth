@@ -1,0 +1,250 @@
+/* Base styles */
+
+body {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: #e0e0e0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background-color 0.5s ease, color 0.5s ease;
+  margin: 0;
+  padding: 0;
+}
+
+body.dark {
+  background: linear-gradient(135deg, #121212 0%, #1c1c1c 100%);
+  color: #ddd;
+}
+
+.navbar {
+  background: #0f1626cc; /* slightly transparent dark */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.7);
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar .logo {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #ffd369;
+  user-select: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 18px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  color: #e0e0e0;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+  background: #ffd369;
+  color: #121212;
+  box-shadow: 0 0 6px #ffd369aa;
+}
+
+#themeToggle {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #ffd369;
+  transition: transform 0.3s ease;
+}
+
+#themeToggle:hover {
+  transform: rotate(20deg);
+}
+
+header.hero {
+  padding: 100px 20px 60px;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+  user-select: none;
+}
+
+header.hero h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #ffd369;
+  margin-bottom: 15px;
+  animation: fadeInDown 1.2s ease forwards;
+}
+
+header.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 35px;
+  color: #ccc;
+  animation: fadeInUp 1.2s ease forwards;
+}
+
+@keyframes fadeInDown {
+  from {opacity: 0; transform: translateY(-30px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+@keyframes fadeInUp {
+  from {opacity: 0; transform: translateY(30px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+.btn {
+  background: #ffd369;
+  color: #121212;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 15px 35px;
+  margin: 0 12px;
+  border-radius: 40px;
+  box-shadow: 0 4px 8px #ffd369aa;
+  transition: all 0.3s ease;
+  display: inline-block;
+  user-select: none;
+}
+
+.btn:hover {
+  background: #ffc107cc;
+  box-shadow: 0 6px 12px #ffc107dd;
+  transform: scale(1.05);
+}
+
+/* Quote of the Day Section */
+
+.quote-section {
+  margin: 40px auto;
+  max-width: 600px;
+  font-style: italic;
+  font-size: 1.3rem;
+  color: #ffd369cc;
+  padding: 20px 30px;
+  border-left: 6px solid #ffd369;
+  background: #2c2f4a;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px #0008 inset;
+  user-select: text;
+}
+
+footer {
+  margin-top: 60px;
+  padding: 25px 15px;
+  background: #0f1626cc;
+  color: #aaa;
+  text-align: center;
+  font-size: 0.9rem;
+  user-select: none;
+}
+
+footer p:last-child {
+  margin-top: 8px;
+  font-style: italic;
+  color: #ffd369aa;
+}
+
+/* Responsive tweaks */
+
+@media (max-width: 600px) {
+  header.hero h1 {
+    font-size: 2.2rem;
+  }
+  .btn {
+    margin: 12px 8px;
+    padding: 12px 25px;
+    font-size: 0.9rem;
+  }
+  .quote-section {
+    font-size: 1.1rem;
+    padding: 15px 20px;
+  }
+}
+.books-section {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin: 50px auto 30px;
+  max-width: 900px;
+  user-select: none;
+  flex-wrap: wrap;
+  padding: 0 15px;
+}
+
+.book-card {
+  background: #22253a;
+  border-radius: 14px;
+  box-shadow: 0 6px 15px #0008;
+  text-align: center;
+  width: 280px;
+  padding: 20px;
+  transition: transform 0.3s ease;
+}
+
+.book-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px #ffd369aa;
+}
+
+.book-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 10px #000a inset;
+}
+
+.book-card h3 {
+  color: #ffd369;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.book-card .btn {
+  padding: 12px 30px;
+  font-size: 1rem;
+}
+
+/* Responsive for small screens */
+
+@media (max-width: 650px) {
+  .books-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+  }
+  .book-card {
+    width: 90%;
+  }
+}
+.lessons {
+  margin: 40px 0;
+}
+.lessons h2 {
+  font-size: 2rem;
+  color: #ffcc00;
+  margin-bottom: 15px;
+  text-shadow: 0 0 6px #b8860b;
+}
+.lessons ul {
+  list-style: inside disc;
+  font-size: 1.15rem;
+  color: #ddd;
+  line-height: 1.6;
+}
+.lessons li {
+  margin-bottom: 12px;
+}
+.lessons li strong {
+  color: #ffd369;
+}

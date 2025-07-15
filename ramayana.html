@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ramayana | Divine Wisdom</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Basic reset and fonts */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #121212;
+      color: #eee;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    body.light {
+      background-color: #f5f5f5;
+      color: #222;
+    }
+
+    nav.navbar {
+      background-color: #1f1f1f;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    body.light nav.navbar {
+      background-color: #ddd;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ffcc00;
+    }
+    body.light .logo {
+      color: #b8860b;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li a {
+      color: #eee;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 6px 8px;
+      border-radius: 4px;
+      transition: background-color 0.2s;
+    }
+    .nav-links li a:hover,
+    .nav-links li a.active {
+      background-color: #ffcc00;
+      color: #121212;
+    }
+    body.light .nav-links li a {
+      color: #222;
+    }
+    body.light .nav-links li a:hover,
+    body.light .nav-links li a.active {
+      background-color: #b8860b;
+      color: #f5f5f5;
+    }
+
+    #themeToggle {
+      font-size: 1.2rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #ffcc00;
+      transition: color 0.3s;
+    }
+    body.light #themeToggle {
+      color: #b8860b;
+    }
+
+    header.hero {
+      padding: 60px 20px 40px;
+      text-align: center;
+      background: url('ramayan2.jpg') center/cover no-repeat;
+      color: #ffeb3b;
+      text-shadow: 1px 1px 5px #000;
+    }
+    body.light header.hero {
+      color: #444;
+      text-shadow: none;
+      background-color: #fafafa;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Ramayana_Rama-Sita_Lakshmana_Hanuman.jpg/1280px-Ramayana_Rama-Sita_Lakshmana_Hanuman.jpg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      padding-bottom: 100px;
+    }
+
+    main.content {
+      max-width: 900px;
+      margin: 20px auto 60px;
+      padding: 0 20px;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    section h2 {
+      border-bottom: 3px solid #ffcc00;
+      padding-bottom: 8px;
+      margin-bottom: 20px;
+      color: #ffcc00;
+    }
+    body.light section h2 {
+      color: #b8860b;
+      border-color: #b8860b;
+    }
+
+    ul {
+      list-style: inside square;
+      line-height: 1.6;
+    }
+
+    article.chapter {
+      margin-bottom: 15px;
+      border-bottom: 1px solid #444;
+      padding-bottom: 10px;
+    }
+    body.light article.chapter {
+      border-color: #ccc;
+    }
+
+    article.chapter h3 {
+      color: #ffc107;
+      cursor: pointer;
+      user-select: none;
+      margin: 0;
+      padding: 10px;
+      background-color: #222;
+      border-radius: 6px;
+      transition: background-color 0.3s;
+    }
+    article.chapter h3:hover {
+      background-color: #ffcc00;
+      color: #121212;
+    }
+    body.light article.chapter h3 {
+      background-color: #eee;
+      color: #b8860b;
+    }
+    body.light article.chapter h3:hover {
+      background-color: #b8860b;
+      color: #f5f5f5;
+    }
+
+    .chapter-content {
+      display: none;
+      margin-top: 12px;
+      padding-left: 15px;
+      line-height: 1.5;
+    }
+
+    .chapter-content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-top: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    }
+
+    img.character-img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-top: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    }
+    /* Smaller images for intro and characters */
+    .small-img {
+      max-width: 300px;
+      height: auto;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #1f1f1f;
+      color: #aaa;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+    }
+    body.light footer {
+      background-color: #ddd;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">🕉️ Divine Wisdom</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="gita.html">Bhagavad Gita</a></li>
+      <li><a href="ramayana.html" class="active">Ramayana</a></li>
+      <li><a href="#">Quote of the Day</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <button id="themeToggle" title="Toggle light/dark theme">🌗</button>
+  </nav>
+
+  <header class="hero">
+    <h1>The Ramayana</h1>
+    <p>The epic journey of Lord Rama, Sita, Lakshmana, and Hanuman</p>
+  </header>
+
+  <main class="content">
+    <section class="intro">
+      <h2>Overview</h2>
+      <p>
+        The Ramayana, written by Sage Valmiki, is one of the most revered Hindu epics.
+        It narrates the life of Lord Rama, an incarnation of Lord Vishnu, and his ideals of duty, honor, and devotion.
+      </p>
+      <img src="valmiki.jpg" alt="Sage Valmiki" class="character-img small-img" />
+    </section>
+
+    <section class="characters">
+      <h2>Main Characters</h2>
+      <ul>
+        <li><strong>Rama:</strong> The prince of Ayodhya and the embodiment of dharma.</li>
+        <li><strong>Sita:</strong> His devoted wife, symbolizing purity and loyalty.</li>
+        <li><strong>Lakshmana:</strong> Rama’s loyal brother and protector.</li>
+        <li><strong>Hanuman:</strong> Devotee of Rama and a mighty warrior of unmatched devotion.</li>
+        <li><strong>Ravana:</strong> The ten-headed demon king of Lanka who abducts Sita.</li>
+      </ul>
+      <img src="ramlaxmansitahanuman.jpg" alt="Rama, Sita, Lakshmana, and Hanuman" class="character-img small-img" />
+    </section>
+
+   <section class="lessons">
+  <h2>Lessons We Learn</h2>
+  <ul>
+    <li><strong>Duty & Sacrifice:</strong> Rama’s obedience to exile shows that righteousness may require personal sacrifice.</li>
+    <li><strong>Loyalty & Devotion:</strong> Sita and Lakshmana stand by Rama, demonstrating unwavering support.</li>
+    <li><strong>Courage & Teamwork:</strong> Hanuman and the vanaras unite to build the bridge—faith combined with action achieves the impossible.</li>
+    <li><strong>Triumph of Dharma:</strong> Rama’s victory over Ravana proves that justice, virtue, and truth prevail.</li>
+    <li><strong>Restoration & Renewal:</strong> Rama’s return ignites hope and celebrations (Diwali)—showing that perseverance brings fulfillment.</li>
+  </ul>
+</section>
+
+    </section>
+    <section class="story">
+  <h2>Key Events</h2>
+
+  <article class="chapter">
+    <h3><a href="rama-exile.html" style="color: inherit; text-decoration: none;">1. Rama's Exile</a></h3>
+  </article>
+
+  <article class="chapter">
+    <h3><a href="abduction-of-sita.html" style="color: inherit; text-decoration: none;">2. Abduction of Sita</a></h3>
+  </article>
+
+  <article class="chapter">
+    <h3><a href="bridge-to-lanka.html" style="color: inherit; text-decoration: none;">3. The Bridge to Lanka</a></h3>
+  </article>
+
+  <article class="chapter">
+    <h3><a href="battle-and-victory.html" style="color: inherit; text-decoration: none;">4. The Battle and Victory</a></h3>
+  </article>
+
+  <article class="chapter">
+    <h3><a href="rama-return.html" style="color: inherit; text-decoration: none;">5. Rama’s Return</a></h3>
+  </article>
+</section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Divine Wisdom | Walk the path of Rama</p>
+  </footer>
+
+  <script>
+    // Theme toggle logic
+    if(localStorage.getItem('theme') === 'light') {
+      document.body.classList.remove('dark');
+      document.body.classList.add('light');
+    } else {
+      document.body.classList.remove('light');
+      document.body.classList.add('dark');
+    }
+
+    const toggleBtn = document.getElementById('themeToggle');
+    toggleBtn.onclick = () => {
+      if(document.body.classList.contains('dark')) {
+        document.body.classList.remove('dark');
+        document.body.classList.add('light');
+        localStorage.setItem('theme', 'light');
+      } else {
+        document.body.classList.remove('light');
+        document.body.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    };
+
+    // Collapsible chapters logic
+    document.querySelectorAll('article.chapter h3').forEach(title => {
+      title.addEventListener('click', () => {
+        const content = title.nextElementSibling;
+        if(content.style.display === 'block') {
+          content.style.display = 'none';
+        } else {
+          // Optionally close others for accordion behavior
+          document.querySelectorAll('.chapter-content').forEach(c => c.style.display = 'none');
+          content.style.display = 'block';
+          // Scroll into view when expanded (nice UX)
+          content.scrollIntoView({behavior: 'smooth', block: 'start'});
+        }
+      });
+    });
+  </script>
+</body>
+</html>

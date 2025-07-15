@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Timeless Truths | Home</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="dark">
+  <nav class="navbar">
+    <div class="logo">🕉️ Timeless Truths</div>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="gita.html">Bhagavad Gita</a></li>
+      <li><a href="ramayana.html">Ramayana</a></li>
+      <li><a href="#" id="quoteToggle">Quote of the Day</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <button id="themeToggle" aria-label="Toggle light/dark mode">🌗</button>
+  </nav>
+
+  <header class="hero">
+    <h1>Welcome to Timeless Truths</h1>
+    <p>Explore the eternal teachings of the Bhagavad Gita and Ramayana.</p>
+    <a href="gita.html" class="btn">Read the Gita</a>
+    <a href="ramayana.html" class="btn">Explore Ramayana</a>
+  </header>
+  <section class="books-section">
+  <div class="book-card">
+    <img src="gita.jpg" alt="Bhagavad Gita Book Cover" />
+    <h3>Bhagavad Gita</h3>
+    <a href="gita.html" class="btn">Read Now</a>
+  </div>
+  <div class="book-card">
+    <img src="ramayan2.jpg" alt="Ramayana Book Cover" />
+    <h3>Ramayana</h3>
+    <a href="ramayana.html" class="btn">Explore Now</a>
+  </div>
+</section>
+
+
+  <section id="quoteSection" class="quote-section" aria-live="polite" aria-atomic="true" aria-relevant="additions" style="display:none;">
+    “The mind acts like an enemy for those who do not control it.” — Bhagavad Gita
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Divine Wisdom | Spreading Sanatan knowledge worldwide</p>
+    <p>Created by DEWA...</p>
+  </footer>
+
+  <script>
+    // Dark mode toggle
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+    });
+
+    // Quote of the Day - rotate quotes every 10 seconds
+    const quotes = [
+      "“The mind acts like an enemy for those who do not control it.” — Bhagavad Gita",
+      "“You have the right to work, but never to the fruit of work.” — Bhagavad Gita",
+      "“Do your duty without attachment.” — Bhagavad Gita",
+      "“When meditation is mastered, the mind is unwavering like the flame of a lamp.” — Bhagavad Gita",
+      "“There is neither this world, nor the world beyond, for the one who sees the unity in all.” — Ramayana",
+      "“Devotion and faith can move the most stubborn heart.” — Ramayana",
+      "“The path of righteousness is never without obstacles, but perseverance is victory.” — Ramayana"
+    ];
+
+    const quoteSection = document.getElementById('quoteSection');
+    let index = 0;
+
+    function rotateQuote() {
+      index = (index + 1) % quotes.length;
+      quoteSection.textContent = quotes[index];
+    }
+
+    setInterval(rotateQuote, 10000);
+
+    // Quote toggle functionality
+    const quoteToggle = document.getElementById('quoteToggle');
+    quoteToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (quoteSection.style.display === 'none' || !quoteSection.style.display) {
+        quoteSection.style.display = 'block';
+        quoteSection.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        quoteSection.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

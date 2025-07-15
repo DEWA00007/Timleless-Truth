@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bhagavad Gita - Read & Learn</title>
+  <style>
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #121212;
+      color: #ddd;
+      line-height: 1.6;
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+    a {
+      color: #bb86fc;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    header {
+      background-color: #1f1f1f;
+      padding: 1rem 2rem;
+      text-align: center;
+      border-bottom: 1px solid #333;
+    }
+    header h1 {
+      font-weight: 700;
+      color: #bb86fc;
+      letter-spacing: 2px;
+    }
+    main {
+      flex: 1;
+      display: flex;
+      padding: 1rem 2rem;
+      gap: 2rem;
+      background-color: #181818;
+    }
+    nav.chapter-list {
+      width: 220px;
+      background-color: #222;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-y: auto;
+      max-height: 80vh;
+      border: 1px solid #333;
+    }
+    nav.chapter-list h2 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      color: #bb86fc;
+      text-align: center;
+    }
+    nav.chapter-list ul {
+      list-style: none;
+    }
+    nav.chapter-list li {
+      margin-bottom: 0.75rem;
+    }
+    nav.chapter-list li a {
+      display: block;
+      padding: 0.4rem 0.6rem;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    nav.chapter-list li a.active,
+    nav.chapter-list li a:hover {
+      background-color: #bb86fc;
+      color: #121212;
+      font-weight: 600;
+    }
+
+    section.content {
+      flex: 1;
+      background-color: #1e1e1e;
+      border-radius: 10px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: row;
+      gap: 2rem;
+      color: #ddd;
+    }
+    /* Left content: text */
+    .text-content {
+      flex: 2;
+      overflow-y: auto;
+      max-height: 75vh;
+      padding-right: 1rem;
+    }
+    .text-content h2 {
+      margin-bottom: 0.5rem;
+      color: #bb86fc;
+    }
+    .text-content p.summary {
+      font-style: italic;
+      margin-bottom: 1rem;
+      color: #bbb;
+    }
+    .text-content ol.verses {
+      list-style-position: inside;
+      margin-left: 1rem;
+      color: #ccc;
+    }
+    .text-content ol.verses li {
+      margin-bottom: 0.7rem;
+    }
+    /* Right content: photo */
+    .photo-section {
+      flex: 1;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(187, 134, 252, 0.5);
+      background-color: #292929;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem;
+    }
+    .photo-section img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      box-shadow: 0 0 10px #bb86fc;
+    }
+    .photo-section figcaption {
+      font-size: 0.9rem;
+      color: #bbb;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #1f1f1f;
+      border-top: 1px solid #333;
+      color: #888;
+      font-size: 0.9rem;
+    }
+
+    /* Navigation buttons inside content */
+    .nav-buttons {
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+    }
+    .nav-buttons button {
+      background-color: #bb86fc;
+      border: none;
+      color: #121212;
+      padding: 0.6rem 1.2rem;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .nav-buttons button:hover:not(:disabled) {
+      background-color: #9a63db;
+    }
+    .nav-buttons button:disabled {
+      background-color: #555;
+      cursor: not-allowed;
+      color: #999;
+    }
+
+    /* Scrollbar for nav and content */
+    nav.chapter-list::-webkit-scrollbar,
+    .text-content::-webkit-scrollbar {
+      width: 8px;
+    }
+    nav.chapter-list::-webkit-scrollbar-thumb,
+    .text-content::-webkit-scrollbar-thumb {
+      background-color: #bb86fcaa;
+      border-radius: 8px;
+    }
+    nav.chapter-list::-webkit-scrollbar-track,
+    .text-content::-webkit-scrollbar-track {
+      background-color: #222;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      main {
+        flex-direction: column;
+        padding: 1rem;
+      }
+      nav.chapter-list {
+        width: 100%;
+        max-height: 200px;
+        margin-bottom: 1rem;
+      }
+      section.content {
+        flex-direction: column;
+        max-height: none;
+        padding: 1rem;
+      }
+      .text-content {
+        max-height: none;
+        padding-right: 0;
+      }
+      .photo-section {
+        flex: none;
+        max-width: 100%;
+        margin-top: 1rem;
+      }
+    }
+  </style>
+</head>
+
+
+  <header>
+    <h1>Bhagavad Gita</h1>
+  </header>
+
+  <main>
+    <nav class="chapter-list" aria-label="Chapters Navigation">
+      <h2>Chapters</h2>
+      <ul id="chapterLinks">
+        <!-- Chapter links injected by JS -->
+      </ul>
+    </nav>
+
+    <section class="content" aria-live="polite" aria-atomic="true">
+      <div class="text-content">
+        <h2 id="chapterTitle">Select a chapter</h2>
+        <p class="summary" id="chapterSummary">Click on any chapter from the left to read its summary and verses.</p>
+        <ol class="verses" id="chapterVerses"></ol>
+
+        <div class="nav-buttons">
+          <button id="prevBtn" disabled>Previous Chapter</button>
+         
+          <button id="nextBtn" disabled>Next Chapter</button>
+        </div>
+      </div>
+
+      <figure class="photo-section" aria-label="Chapter Illustration">
+        <img id="chapterImage" src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Bhagavad_Gita_Manuscript.jpg" alt="Bhagavad Gita Manuscript" />
+        <figcaption id="photoCaption">Bhagavad Gita Manuscript</figcaption>
+      </figure>
+    </section>
+
+  </main>
+
+  <footer>
+    &copy; 2025 DEWA...
+  </footer>
+
+  <script>
+    const chapters = {
+      1: {
+        title: "Chapter 1 - Arjuna’s Dilemma",
+        summary: "Arjuna faces a moral crisis about fighting in the battle.",
+        verses: [
+          "धृतराष्ट्र उवाच | धर्मक्षेत्रे कुरुक्षेत्रे समवेता युयुत्सवः | (1.1)",
+          "Translation: 'Dhritarashtra said: O Sanjaya, assembled in the holy land of Kurukshetra, eager to fight, what did my sons and the sons of Pandu do?'"
+        ],
+        image: "arjun1.jpg",
+        imageCaption: "Arjuna and Krishna on the chariot"
+      },
+      2: {
+        title: "Chapter 2 - The Yoga of Knowledge",
+        summary: "Krishna explains the imperishable soul and duty.",
+        verses: [
+          "कुतस्त्वा कश्मलमिदं विषमे समुपस्थितम् | (2.3)",
+          "Translation: 'Why this dejection, this shame, this faint-heartedness, O Arjuna?'"
+        ],
+        image: "chapter2.jpg",
+        imageCaption: "Krishna teaching Arjuna"
+      },
+      3: {
+        title: "Chapter 3 - Karma Yoga",
+        summary: "The path of selfless action without attachment.",
+        verses: [
+          "न कर्मणामनारंभान्नैष्कर्म्यं पुरुषोऽश्नुते | (3.4)",
+          "Translation: 'No one can remain inactive even for a moment.'"
+        ],
+        image: "chapter3.jpg",
+        imageCaption: "Path of action"
+      },
+      4: {
+        title: "Chapter 4 - The Yoga of Knowledge and Renunciation",
+        summary: "The importance of knowledge and the origin of yoga.",
+        verses: [
+          "श्रीभगवानुवाच | इमं विज्ञानमव्ययमच्छेद्यं भारत अर्जुन | (4.1)",
+          "Translation: 'The Blessed Lord said: This imperishable science of yoga I instructed to Vivasvan.'"
+        ],
+        image: "chapter4.jpg",
+        imageCaption: "Krishna imparting knowledge"
+      },
+      5: {
+        title: "Chapter 5 - Karma Sannyasa",
+        summary: "Renunciation of action vs. path of selfless service.",
+        verses: [
+          "सन्न्यासस्तु महाबाहो दुःखमाप्तुमयोगतः | (5.2)",
+          "Translation: 'O mighty-armed Arjuna, renunciation of action is hard to attain without yoga.'"
+        ],
+        image: "chapter5.jpg",
+        imageCaption: "Meditative renunciation"
+      },
+      6: {
+        title: "Chapter 6 - The Yoga of Meditation",
+        summary: "Practice of meditation to achieve self-realization.",
+        verses: [
+          "योगस्थः कुरु कर्माणि सङ्गं त्यक्त्वा धनञ्जय | (6.1)",
+          "Translation: 'Perform your prescribed duties, Arjuna, being steadfast in yoga.'"
+        ],
+        image: "chapter6.jpg",
+        imageCaption: "Yoga and meditation"
+      },
+      7: {
+        title: "Chapter 7 - Knowledge of the Ultimate Truth",
+        summary: "Understanding the supreme reality and devotion.",
+        verses: [
+          "मय्यासक्तमनो ये मां भक्त्या रामते तेषु | (7.16)",
+          "Translation: 'Those who worship me with devotion, meditating on my transcendental form.'"
+        ],
+        image: "chapter7.jpg",
+        imageCaption: "Supreme reality and devotion"
+      },
+      8: {
+        title: "Chapter 8 - The Imperishable Brahman",
+        summary: "The eternal soul and final thoughts at death.",
+        verses: [
+          "अर्जुन उवाच | कर्मजं बुद्धियुक्ता हि फलत्येति तत्त्वतः | (8.1)",
+          "Translation: 'Arjuna said: Those who act according to their intellect achieve the fruits of action.'"
+        ],
+        image: "chapter8.jpg",
+        imageCaption: "Eternal soul and Brahman"
+      },
+      9: {
+        title: "Chapter 9 - The Kingly Science",
+        summary: "The glory of devotional service.",
+        verses: [
+          "इमं परमं गुह्यं मां एकमव्ययं मतम् | (9.1)",
+          "Translation: 'This is the most secret and supreme knowledge.'"
+        ],
+        image: "chapter9.jpg",
+        imageCaption: "Devotional service"
+      },
+      10: {
+        title: "Chapter 10 - The Divine Glories",
+        summary: "Krishna reveals his divine manifestations.",
+        verses: [
+          "भूय एव महाबाहो शृणु मे परमं वचः | (10.1)",
+          "Translation: 'O mighty-armed Arjuna, hear once again My supreme word.'"
+        ],
+        image: "chapter10.jpg",
+        imageCaption: "Divine manifestations"
+      },
+      11: {
+        title: "Chapter 11 - The Vision of the Universal Form",
+        summary: "Arjuna sees Krishna’s cosmic universal form.",
+        verses: [
+          "अर्जुन उवाच | द्रष्टुमिच्छामि ते रूपं परमं गौरवम् | (11.1)",
+          "Translation: 'Arjuna said: I wish to see your supreme, glorious form.'"
+        ],
+        image: "chapter11.jpg",
+        imageCaption: "Universal Form"
+      },
+      12: {
+        title: "Chapter 12 - The Path of Devotion",
+        summary: "Qualities of a true devotee.",
+        verses: [
+          "अर्जुन उवाच | ये तु धर्म्ये प्रत्युपासते मामन्यदेवताः | (12.1)",
+          "Translation: 'Arjuna said: Those who worship other gods with faith.'"
+        ],
+        image: "chapter12.jpg",
+        imageCaption: "Path of devotion"
+      },
+      13: {
+        title: "Chapter 13 - The Field and the Knower",
+        summary: "Distinction between body (field) and soul (knower).",
+        verses: [
+          "अर्जुन उवाच | एतद्यो वेत्ति तत्त्वेनातत्त्वं यत्समासतः | (13.1)",
+          "Translation: 'Arjuna asked: What is the field, and who is the knower of the field?'"
+        ],
+        image: "chapter13.jpg",
+        imageCaption: "Field and knower"
+      },
+      14: {
+        title: "Chapter 14 - The Three Gunas",
+        summary: "The three modes of material nature.",
+        verses: [
+          "मोहः कामराग इह लोभः प्रमादः मतमुत्तमम् | (14.6)",
+          "Translation: 'Delusion, lust, greed, and negligence are considered the highest in this world.'"
+        ],
+        image: "chapter14.jpg",
+        imageCaption: "Three Gunas"
+      },
+      15: {
+        title: "Chapter 15 - The Supreme Person",
+        summary: "The eternal banyan tree and the supreme person.",
+        verses: [
+          "ऊर्ध्वमूलमधःशाखमश्वत्थं प्राहुरव्ययम् | (15.1)",
+          "Translation: 'They speak of the banyan tree with roots above and branches below.'"
+        ],
+        image: "chapter15.jpg",
+        imageCaption: "Banyan Tree symbolism"
+      },
+      16: {
+        title: "Chapter 16 - The Divine and Demonic Natures",
+        summary: "Characteristics of divine and demonic natures.",
+        verses: [
+          "अभिजातस्य भारतस्य धीमतामहमर्जुन | (16.1)",
+          "Translation: 'O Arjuna, I shall now describe the divine and demonic natures.'"
+        ],
+        image: "chapter16.jpg",
+        imageCaption: "Divine vs Demonic nature"
+      },
+      17: {
+        title: "Chapter 17 - The Threefold Faith",
+        summary: "Faith according to the three modes of nature.",
+        verses: [
+          "अर्जुन उवाच | तत्त्वतो ज्ञात्वा तु वात्सल्यं पर्युपासते | (17.1)",
+          "Translation: 'Arjuna said: Having known the truth, some worship with affection.'"
+        ],
+        image: "chapter17.jpg",
+        imageCaption: "Threefold faith"
+      },
+      18: {
+        title: "Chapter 18 - The Perfection of Renunciation",
+        summary: "The final teachings and renunciation.",
+        verses: [
+          "अर्जुन उवाच | श्रीभगवानुवाच प्राह ऋषिभिर्बहुधा स्वयम् | (18.1)",
+          "Translation: 'Arjuna said: The Blessed Lord spoke these words to the sages in many ways.'"
+        ],
+        image: "chapter18.jpg",
+        imageCaption: "Renunciation and liberation"
+      }
+    };
+
+    // Fill chapter list in nav
+    const chapterLinksUL = document.getElementById('chapterLinks');
+    const chaptersCount = Object.keys(chapters).length;
+
+    for(let i=1; i<=chaptersCount; i++) {
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.textContent = `Chapter ${i}`;
+      a.href = '#';
+      a.dataset.chapter = i;
+      if (i === 1) a.classList.add('active'); // highlight chapter 1 by default
+      li.appendChild(a);
+      chapterLinksUL.appendChild(li);
+    }
+
+    // Elements
+    const chapterTitle = document.getElementById('chapterTitle');
+    const chapterSummary = document.getElementById('chapterSummary');
+    const chapterVerses = document.getElementById('chapterVerses');
+    const chapterImage = document.getElementById('chapterImage');
+    const photoCaption = document.getElementById('photoCaption');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    
+    let currentChapter = 1;
+
+    // Load chapter content
+    function loadChapter(chapterNum) {
+      const ch = chapters[chapterNum];
+      if (!ch) return;
+
+      // Update title and summary
+      chapterTitle.textContent = ch.title;
+      chapterSummary.textContent = ch.summary;
+
+      // Clear verses
+      chapterVerses.innerHTML = '';
+      ch.verses.forEach(verse => {
+        const li = document.createElement('li');
+        li.textContent = verse;
+        chapterVerses.appendChild(li);
+      });
+
+      // Update image and caption
+      chapterImage.src = ch.image;
+      chapterImage.alt = ch.title;
+      photoCaption.textContent = ch.imageCaption;
+
+      // Update buttons
+      prevBtn.disabled = chapterNum === 1;
+      nextBtn.disabled = chapterNum === chaptersCount;
+
+      // Update active link
+      const links = chapterLinksUL.querySelectorAll('a');
+      links.forEach(link => {
+        link.classList.toggle('active', Number(link.dataset.chapter) === chapterNum);
+      });
+
+      currentChapter = chapterNum;
+    }
+
+    // Click on nav chapters
+    chapterLinksUL.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A') {
+        e.preventDefault();
+        const chapterNum = Number(e.target.dataset.chapter);
+        loadChapter(chapterNum);
+        // Scroll text content to top
+        document.querySelector('.text-content').scrollTop = 0;
+      }
+    });
+
+    // Prev button
+    prevBtn.addEventListener('click', () => {
+      if (currentChapter > 1) {
+        loadChapter(currentChapter - 1);
+        document.querySelector('.text-content').scrollTop = 0;
+      }
+    });
+
+    // Next button
+    nextBtn.addEventListener('click', () => {
+      if (currentChapter < chaptersCount) {
+        loadChapter(currentChapter + 1);
+        document.querySelector('.text-content').scrollTop = 0;
+      }
+    });
+
+    
+
+    // Load first chapter initially 
+    loadChapter(1);
+  </script>
+</body>
+</html>
